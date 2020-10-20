@@ -2,50 +2,40 @@ import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Text, Input, Button } from 'react-native-elements';
 import Spacer from '../components/Spacer';
-import { withNavigation  } from 'react-navigation';
  
-const SigninScreen = ({ navigation }) => {
- const [email, setEmail] = useState('');
- const [password, setPassword] = useState('');
+const OtpScreen = ({ navigation }) => {
+ const [otp, setOtp] = useState('');
+ 
  
  return (
  <View style={styles.container}>
  <ScrollView style={styles.scrollView} >
  <Spacer>
- <Text style={styles.Text}h3>Sign In </Text>
+ <Text style={styles.Text}h3>Verification</Text>
  </Spacer>
  <Input
- label="Email"
- value={email}
- onChangeText={setEmail}
+ label="otp"
+ value={otp}
+ onChangeText={setOtp}
  autoCapitalize="none"
  autoCorrect={false}
  />
  <Spacer />
- <Input
- secureTextEntry
- label="Password"
- value={password}
- onChangeText={setPassword}
- autoCapitalize="none"
- autoCorrect={false}
- />
+ 
  <TouchableOpacity 
  onPress={() => navigation.navigate('Signup')} >
-   <Text style={{marginLeft:32,color:'rgb(07, 127, 255)'}}>Not Registered!</Text>
+   <Text style={{marginLeft:32,color:'rgb(07, 127, 255)'}}>back</Text>
  </TouchableOpacity>
  
  <Spacer>
- <Button style={{marginHorizontal:30}}
-   onPress={() => navigation.navigate('S')}
-  title="Sign In" />
+ <Button style={styles.Button} title="Verify" />
  </Spacer>
  </ScrollView>
  </View>
  );
 };
  
-SigninScreen.navigationOptions = () => {
+OtpScreen.navigationOptions = () => {
  return {
  header: () => false,
  };
@@ -62,12 +52,12 @@ const styles = StyleSheet.create({
     flex: 1
  },
  Button:{
-     marginTop:10
+     marginTop:10,
+     marginHorizontal:30
  },
  Text:{
      alignSelf:'center'
  }
 });
  
- 
-export default withNavigation(SigninScreen);
+export default OtpScreen;
